@@ -28,7 +28,7 @@ class ContactoController extends AbstractController
 
     /**
 
-     * @Route("/contacto/{codigo}", name="ficha_contacto")
+     * @Route("/contacto/{codigo<\d+>?1}", name="ficha_contacto")
 
      */
 
