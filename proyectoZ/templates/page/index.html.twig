@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mex-Change{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="css/estilos.css" />{% endblock %}
+{% block body %}
+ <div class="menu">
+      <img src="media/img/logo.png" alt="Logo" class="logo">
+      <ul>
+        <li class="lista" name="lista">
+          <a href="/">
+            <span class="icono"> <ion-icon name="home"></ion-icon></span>
+            <span class="texto">Inicio</span>
+          </a>
+        </li>
+        <li class="lista" name="lista">
+          <a href="/contacto">
+            <span class="icono"> <ion-icon name="mail"></ion-icon></span>
+            <span class="texto">Contacto</span>
+          </a>
+        </li>
+        <li class="lista" name="lista">
+          <a href="/register">
+            <span class="icono"><ion-icon name="person"></ion-icon></span>
+            <span class="texto">Login/Register</span>
+          </a>
+        </li>
+      </ul>
+      <div class="indicador"></div>
+    </div>
+    <!--Portada-->
+    <div class="portada">
+      <div class="contenido-portada">
+        <h2 class="titulo-portada">Algo increible</h2>
+        <p class="cuerpo-portada">
+          Lorem Ipsum
+        </p>
+        <a href="#" class="boton-portada">Más</a>
+      </div>
+    </div>
+
+    <!--Cards-->
+    <section>
+      <div class="fondo-foxy">
+        <div class="foxy">
+          <div class="contenido-foxy">
+            <h2 class="titulo-foxy">Algo increible</h2>
+            <p class="cuerpo-foxy">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <a href="#" class="boton-foxy">Más</a>
+          </div>
+        </div>
+      </div>
+      <div class="fondo-fish">
+        <div class="fish">
+          <div class="contenido-fish">
+            <h2 class="titulo-fish">Algo increible</h2>
+            <p class="cuerpo-fish">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <a href="#" class="boton-fish">Más</a>
+          </div>
+        </div>
+      </div>
+      <div class="fondo-tiger">
+        <div class="tiger">
+          <div class="contenido-tiger">
+            <h2 class="titulo-tiger">Algo increible</h2>
+            <p class="cuerpo-tiger">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <a href="#" class="boton-tiger">Más</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="contenedor">
+        <div class="fila">
+          <div class="columna">
+            <ul>
+              <li style="opacity: 0.6">Mex-Change ©</li>
+            </ul>
+          </div>
+          <div class="columna">
+            <ul>
+              <li><a href="">Sobre nosotros</a></li>
+            </ul>
+          </div>
+          <div class="columna">
+            <ul>
+              <li><a href="">Servicios</a></li>
+            </ul>
+          </div>
+          <div class="columna">
+            <ul>
+              <li><a href="">Politica de Privacidad</a></li>
+            </ul>
+          </div>
+          <div class="columna">
+            <div class="redes-sociales">
+              <a href=""><ion-icon name="logo-twitter"></ion-icon></a>
+              <a href=""><ion-icon name="logo-instagram"></ion-icon></a>
+              <a href=""><ion-icon name="logo-flickr"></ion-icon></a>
+              <a href=""><ion-icon name="logo-linkedin"></ion-icon></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+{% endblock %}

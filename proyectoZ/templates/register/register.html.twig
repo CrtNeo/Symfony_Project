@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegisterController!{% endblock %}
+{% block stylesheets %}
+            <link rel="stylesheet" href="css/register.css" />
+{% endblock %}
+{% block body %}
+<div class="menu">
+      <img src="/media/img/logo.png" alt="Logo" class="logo">
+      <ul>
+        <li class="lista" name="lista">
+          <a href="/">
+            <span class="icono"> <ion-icon name="home"></ion-icon></span>
+            <span class="texto">Inicio</span>
+          </a>
+        </li>
+        <li class="lista" name="lista">
+          <a href="/contacto">
+            <span class="icono"> <ion-icon name="mail"></ion-icon></span>
+            <span class="texto">Contacto</span>
+          </a>
+        </li>
+        <li class="lista" name="lista">
+          <a href="/register">
+            <span class="icono"><ion-icon name="person"></ion-icon></span>
+            <span class="texto">Login/Register</span>
+          </a>
+        </li>
+      </ul>
+      <div class="indicador"></div>
+    </div>
+    <section>
+      <div class="contenedor">
+        <div class="usuario login">
+          <div class="imagenForm"><img src="media/img/login.jpg" alt=""></div>
+          <div class="formulario">
+            <form>
+              <h2>Login</h2>
+              <input type="text" placeholder="Nombre de usuario" />
+              <input type="password" placeholder="Contraseña" id="passwd" />
+              <input type="checkbox" id="check" />
+              <input type="submit" value="Login" />
+              <p class="registro">
+                No tienes una cuenta todavía? <a href="#" id="cambiador">Registrarse</a>
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <div class="usuario register">
+          <div class="formulario">
+            <form>
+              <h2>Crear una cuenta</h2>
+              <input type="text" placeholder="Nombre de usuario" />
+              <input type="text" placeholder="Correo electronico" />
+              <input type="password" placeholder="Contraseña"/>
+              <input type="text" placeholder="Confirmar contraseña" />
+              <input type="submit" value="Register" />
+              <p class="registro">
+                Ya tienes una cuenta? <a href="#" id="cambiador2">Iniciar sesion</a>
+              </p>
+            </form>
+          </div>
+          <div class="imagenForm"><img src="media/img/register.jpg" alt=""></div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
