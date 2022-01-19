@@ -186,7 +186,7 @@ body {
 
 .portada{
   background-size: cover;
-  background-image: url(../media/img/turtle.jpg);
+  background-image: url(../media/img/portada.jpeg);
   padding: 50rem 0 0;
   height: 100vh;  
   color: white;
@@ -245,6 +245,16 @@ section > div {
   margin: 15px;
 }
 
+.titulo-categorias {
+  position: absolute;
+  margin-top: -50px;
+  display: inline-block;
+  color: white;
+  font-family: 'Righteous', serif;
+  font-size: 34px; 
+  text-shadow: .07em .07em 0 hsla(230,40%,50%,1);
+  }
+
 /*Foxy-card*/
 
 .fondo-foxy {
@@ -255,7 +265,7 @@ section > div {
 .foxy {
   color: white;
   background-size: cover;
-  background-image: url(../media/img/fox.jpg);
+  background-image: url(../media/img/coche.jpg);
   padding: 10rem 0 0;
   max-width: 50ch;
   border-radius: 10px;
@@ -345,7 +355,7 @@ section > div {
 .fish {
   color: white;
   background-size: cover;
-  background-image: url(../media/img/fish.jpg);
+  background-image: url(../media/img/moto.jpg);
   padding: 10rem 0 0;
   max-width: 50ch;
   border-radius: 10px;
@@ -435,7 +445,7 @@ section > div {
 .tiger {
   color: white;
   background-size: cover;
-  background-image: url(../media/img/tiger.jpg);
+  background-image: url(../media/img/camion.jpg);
   padding: 10rem 0 0;
   max-width: 50ch;
   border-radius: 10px;
@@ -516,11 +526,22 @@ section > div {
 .boton-tiger:focus {
   background-color: white;
 }
+ /*Efectos cards*/
+ .fundido{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 2s ease;
+}
+.fundido.active{
+  transform: translateY(0px);
+  opacity: 1;
+}
 
 /*Footer*/
 
 footer{
-  background: #007d56;
+  background-image: linear-gradient(to right, #d6a419, #dfb243, #e7bf64, #efcd82, #f6dba1, #efd7a4, #e7d2a8, #e0ceab, #c9b795, #b2a07f, #9c8a6a, #867555);
   padding: 2em;
   display: flex;
   margin-top: auto;
@@ -555,14 +576,16 @@ footer ul li a{
   text-transform: capitalize;
   text-decoration: none;
   color: var(--clr);
+  opacity: 0.7;
   font-weight: 300;
   display: block;
   transition: all 0.3s ease;
 }
 
 footer ul li a:hover{
-  color: #ffffff;
-  transform: scale(1.15);
+  color: #24262b;
+  transform: scale(1.2);
+  opacity: 1;
 }
 
 .redes-sociales a{
@@ -573,7 +596,7 @@ footer ul li a:hover{
   align-items: center;
   color: #ffffff;
   border-radius: 50%;
-  background-color: #4eb388;
+  background-color: #391a1f;
   font-size: 20px;
   transition: all 0.5s ease;
 }
