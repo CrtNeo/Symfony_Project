@@ -1,12 +1,10 @@
-  
-
 {% extends 'base.html.twig' %}
-{% block title %}Coches{% endblock %}
+{% block title %}Autos{% endblock %}
 {% block body %}
-    <h1>Ficha de coche</h1>
+    <h1>Ficha del auto</h1>
     {% if auto %}
-        {{ include ('partials/datos_contacto.html.twig', { 'auto': auto })}}
+        {{ include ('partials/datos_vehiculo.html.twig', { 'auto': auto })}}
     {% else %}
-        <p>Coche no encontrado</p>
+        <p>Auto no encontrado</p>
     {% endif %}
    {% endblock %}     
