@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap');*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --clr: #222327;
+  --clr-accent-400: hsl(142 90% 61%);
+}
+body {
+  background: var(--clr); 
+  min-height: 100vh;
+}
+
+.categoria{
+  margin-top: 8rem;
+}
+.cuerpo-categoria{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vehiculo{
+    width: 300px;
+    height: 200px;
+    background: white;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+.vehiculo ul li{
+    list-style: none;
+}
+
+.vehiculo ul .piezas{
+    display: inline-block;
+}
+
+.vehiculo .contenido{
+    padding: 10px;
+}
+
+.titulo-categoria{
+    margin-top: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}

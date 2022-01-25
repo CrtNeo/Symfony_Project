@@ -3,30 +3,7 @@
 {% block title %}Mex-Change{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="css/estilos.css" />{% endblock %}
 {% block body %}
- <div class="menu">
-      <img src="media/img/logo.png" alt="Logo" class="logo">
-      <ul>
-        <li class="lista" name="lista">
-          <a href="/">
-            <span class="icono"> <ion-icon name="home"></ion-icon></span>
-            <span class="texto">Inicio</span>
-          </a>
-        </li>
-        <li class="lista" name="lista">
-          <a href="/contacto">
-            <span class="icono"> <ion-icon name="mail"></ion-icon></span>
-            <span class="texto">Contacto</span>
-          </a>
-        </li>
-        <li class="lista" name="lista">
-          <a href="/register">
-            <span class="icono"><ion-icon name="person"></ion-icon></span>
-            <span class="texto">Login/Register</span>
-          </a>
-        </li>
-      </ul>
-      <div class="indicador"></div>
-    </div>
+ {{ include ('partials/nav.html.twig')}}
     <!--Portada-->
     <div class="portada">
       <div class="contenido-portada">
@@ -75,7 +52,7 @@
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
-            <a href="#" class="boton-foxy">Más</a>
+            <a href="/categoria/coches" class="boton-foxy">Más</a>
           </div>
         </div>
       </div>
@@ -87,7 +64,7 @@
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
-            <a href="#" class="boton-fish">Más</a>
+            <a href="/categoria/motos" class="boton-fish">Más</a>
           </div>
         </div>
       </div>
@@ -99,7 +76,7 @@
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
-            <a href="#" class="boton-tiger">Más</a>
+            <a href="/categoria/otros" class="boton-tiger">Más</a>
           </div>
         </div>
       </div>

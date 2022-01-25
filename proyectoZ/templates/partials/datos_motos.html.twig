@@ -1,0 +1,17 @@
+
+<div class = "vehiculo">
+<div class = "contenido">
+<h3><strong>{{ moto.modelo }}</strong></h3>
+
+<ul>
+    <li><strong>ID</strong>: {{ moto.id }}
+    <li><strong>Piezas</strong>
+    <ul>
+    {% for pieza in moto.piezas %}
+        <li class="piezas">{{ pieza }}</li>
+    {% endfor %}
+    </ul>
+    </li>
+</ul>
+</div>
+</div>

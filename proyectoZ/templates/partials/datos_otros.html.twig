@@ -1,0 +1,16 @@
+<div class = "vehiculo">
+<div class = "contenido">
+<h3><strong>{{ otro.modelo }}</strong></h3>
+
+<ul>
+    <li><strong>ID</strong>: {{ otro.id }}
+    <li><strong>Piezas</strong>
+    <ul>
+    {% for pieza in otro.piezas %}
+        <li class="piezas">{{ pieza }}</li>
+    {% endfor %}
+    </ul>
+    </li>
+</ul>
+</div>
+</div>

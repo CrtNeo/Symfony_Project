@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Otros{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/categorias.css" />
+    <link rel="stylesheet" href="/css/estilos.css" />
+{% endblock %}
+{% block body %} 
+ {{ include ('partials/nav.html.twig')}}
+ <div class = "categoria">
+    <h1 class = "titulo-categoria">Listado de otros vehiculos</h1>
+         <div class = "cuerpo-categoria">
+            {% for otro in otros %}
+                {{ include ('partials/datos_otros.html.twig', { 'otro': otro })}}
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

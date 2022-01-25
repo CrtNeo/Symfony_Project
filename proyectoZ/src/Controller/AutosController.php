@@ -18,6 +18,18 @@ class AutosController extends AbstractController
     "Peugeot" => ["modelo" => "308", "id" => "28908267", "piezas" =>  ["Sistema Eléctrico"]]
 ];
 
+
+/**
+     * @Route("/categoria/coches", name="pagina_coches")
+     */
+    public function inicio(): Response{
+        
+        return $this->render('autos/index.html.twig', [
+            'controller_name' => 'AutosController',
+            'autos' => $this->autos
+        ]);
+    }
+
 /**
  * @Route("/categoria/{codigo<\d+>?1}", name="autos")
  */
