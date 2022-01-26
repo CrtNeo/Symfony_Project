@@ -5,7 +5,7 @@
     <h1>Listado de coches</h1>
     {% if autos %}
         {% for auto in autos %}
-            {{ include ('partials/datos_vehiculo.html.twig', { 'auto': auto })}}
+            {{ include ('partials/datos_autos.html.twig', { 'auto': auto })}}
         {% endfor %}
     {% else %}
         <p>Coche no encontrado</p>
