@@ -4,14 +4,12 @@
     <link rel="stylesheet" href="/css/categorias.css" />
     <link rel="stylesheet" href="/css/estilos.css" />
 {% endblock %}
-{% block body %} 
+{% block body %}
  {{ include ('partials/nav.html.twig')}}
 <div class = "categoria">
-{% for auto in autos %}
-<form action = "/categoria/buscar/{{auto.modelo}}">
-{% endfor %}
+<form>
  <div class="barra-buscar">
-    <button class="boton-buscar"><ion-icon name="search-outline"></ion-icon></button>
+    <button class="boton-buscar"><ion-icon name="search-outline" id="icono"></ion-icon></button>
     <input type="text" class="input-search" placeholder="Buscar...">
   </div>
   </form>
