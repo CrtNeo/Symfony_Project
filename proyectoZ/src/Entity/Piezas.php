@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\VehiculoRepository;
+use App\Repository\PiezasRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=VehiculoRepository::class)
+ * @ORM\Entity(repositoryClass=PiezasRepository::class)
  */
-class Vehiculo
+class Piezas
 {
     /**
      * @ORM\Id
@@ -21,6 +21,12 @@ class Vehiculo
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Vehiculos::class, inversedBy="piezas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $vehiculos;
 
     public function getId(): ?int
     {
@@ -35,6 +41,18 @@ class Vehiculo
     public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getVehiculos(): ?Vehiculos
+    {
+        return $this->vehiculos;
+    }
+
+    public function setVehiculos(?Vehiculos $vehiculos): self
+    {
+        $this->vehiculos = $vehiculos;
 
         return $this;
     }
