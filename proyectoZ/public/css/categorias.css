@@ -98,3 +98,46 @@ body {
   pointer-events: painted;  
 }
 
+/*Counters*/
+
+.contadores{
+  min-height: 35vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contadores::after{
+  background: white;
+  height: 300px;
+  width: 5px;
+}
+
+.contadores .contenido-counter{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.contenido-counter .caja{ 
+  width: calc(75% - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.contenido-counter .caja .contador{
+  font-size: 50px;
+  color: #f2f2f2;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+
+.contenido-counter .caja .texto-contador{
+  color: #f2f2f2;
+  font-weight: 400;
+  font-family: sans-serif;
+}
