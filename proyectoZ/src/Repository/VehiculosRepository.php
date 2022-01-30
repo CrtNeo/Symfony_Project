@@ -19,6 +19,23 @@ class VehiculosRepository extends ServiceEntityRepository
         parent::__construct($registry, Vehiculos::class);
     }
 
+    public function findByName($text): array
+    {
+        $qb = $this->createQueryBuilder('v')
+        ->andWhere('v.nombre LIKE :text')
+        ->setParameter('text', '%' . $text . '%')
+        ->getQuery();
+        return $qb->execute();
+    }
+
+    public function findByMarca(): array
+    {
+        $qb = $this->query('marca.vehiculos')
+        ->from('vehiculos')
+        ->join('marcas', 'marca.vehiculos = marcas.nombre', 'left outer')
+        ->get(); 
+        return $qb->execute();
+    }
     // /**
     //  * @return Vehiculos[] Returns an array of Vehiculos objects
     //  */

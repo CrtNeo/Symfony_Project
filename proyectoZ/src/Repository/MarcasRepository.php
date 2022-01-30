@@ -19,6 +19,15 @@ class MarcasRepository extends ServiceEntityRepository
         parent::__construct($registry, Marcas::class);
     }
 
+    public function findByName($text): array
+    {
+        $qb = $this->createQueryBuilder('v')
+        ->andWhere('v.nombre LIKE :text')
+        ->setParameter('text', '%' . $text . '%')
+        ->getQuery();
+        return $qb->execute();
+    }
+
     // /**
     //  * @return Marcas[] Returns an array of Marcas objects
     //  */

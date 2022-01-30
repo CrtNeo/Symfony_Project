@@ -15,8 +15,8 @@
   </form>
     <h1 class = "titulo-categoria">Listado de otros vehiculos</h1>
          <div class = "cuerpo-categoria">
-            {% for otro in otros %}
-                {{ include ('partials/datos_otros.html.twig', { 'otro': otro })}}
+            {% for vehiculo in vehiculos %}
+                {{ include ('partials/datos_vehiculo.html.twig', { 'vehiculo': vehiculo })}}
             {% endfor %}
     </div>
 </div>

@@ -2,64 +2,34 @@
 
 namespace App\Controller;
 
+use App\Entity\Piezas;
+use App\Entity\Vehiculos;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AutosController extends AbstractController
 {
-    
-    private $autos = [
-
-    "Opel" => ["modelo" => "Corsa", "id" => "524142432", "piezas" => ["Frenos", "Suspensión","Carroceria"]],
-
-    "Renault" => ["modelo" => "Megane", "id" => "88958448", "piezas" => ["Motor", "Filtros"]],
-
-    "Peugeot" => ["modelo" => "308", "id" => "28908267", "piezas" =>  ["Sistema Eléctrico"]]
-];
-
-
 /**
      * @Route("/categoria/coches", name="pagina_coches")
      */
-    public function inicio(): Response{
+    public function inicio(ManagerRegistry $doctrine): Response{
+  
+        $repositorio = $doctrine->getRepository(Vehiculos::class);
+
+        $vehiculos =  $repositorio->findBy(["tipos" => "1"]);
+
+        /* 
+        $repositorio2 = $doctrine->getRepository(Piezas::class);
+
+        $piezas =  $repositorio2->findBy(["nombre"]);
+        */
         
         return $this->render('autos/index.html.twig', [
             'controller_name' => 'AutosController',
-            'autos' => $this->autos
+            'vehiculos' => $vehiculos
         ]);
     }
 
-/**
- * @Route("/categoria/{codigo<\d+>?1}", name="autos")
- */
-public function ficha($codigo): Response
-{
-
-    //Si no existe el elemento con dicha clave devolvemos null
-
-    $resultado = ($this->autos[$codigo] ?? null);
-
-    return $this->render('autos.html.twig', [
-
-        'auto' => $resultado
-
-    ]);
-}
-
-/**
- * @Route("/categoria/buscar/{texto}", name="buscar_auto")
- */
-
-public function buscar($texto): Response
-{
-
-    $resultados = array_filter($this->autos,
-        function ($auto) use ($texto) {
-            return strpos($auto["modelo"], $texto) !== FALSE;
-        }
-    );
-
-    return $this->render("lista_autos.html.twig", ['autos' => $resultados]);
-}
 }

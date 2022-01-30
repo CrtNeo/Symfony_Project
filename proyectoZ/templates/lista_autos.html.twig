@@ -1,13 +1,23 @@
 
 {% extends 'base.html.twig' %}
 {% block title %}Coches{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/categorias.css" />
+    <link rel="stylesheet" href="/css/estilos.css" />
+{% endblock %}
 {% block body %}
-    <h1>Listado de coches</h1>
-    {% if autos %}
-        {% for auto in autos %}
-            {{ include ('partials/datos_autos.html.twig', { 'auto': auto })}}
-        {% endfor %}
-    {% else %}
-        <p>Coche no encontrado</p>
-    {% endif %}    
+{{ include ('partials/nav.html.twig')}}
+    <div class = "categoria">
+    <h1 class = "titulo-categoria">Listado de vehiculos</h1>
+     <div class = "cuerpo-categoria">
+            {% if vehiculos %}
+                {% for vehiculo in vehiculos %}
+                    {{ include ('partials/datos_vehiculo.html.twig', { 'vehiculo': vehiculo })}}
+                {% endfor %}
+            {% else %}
+                <p style="color:white">Coche no encontrado</p>
+            {% endif %}    
+        </div>
+    </div>
+{{ include ('partials/footer.html.twig')}}
 {% endblock %}

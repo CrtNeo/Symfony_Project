@@ -15,10 +15,10 @@
   </form>
     <h1 class = "titulo-categoria">Listado de coches</h1>
      <div class = "cuerpo-categoria">
-        {% for auto in autos %}
-            {{ include ('partials/datos_autos.html.twig', { 'auto': auto })}}
+        {% for vehiculo in vehiculos %}
+            {{ include ('partials/datos_vehiculo.html.twig', { 'vehiculo': vehiculo })}}
         {% endfor %}
-    </div>
+     </div>
 </div>
 <div class = "caja">
     <div class="contador"></div>
