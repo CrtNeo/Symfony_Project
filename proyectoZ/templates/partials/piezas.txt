@@ -1,6 +1,0 @@
-    <ul>
-    {% for pieza in piezas.nombre %}
-        <li class="piezas">{{ pieza }}</li>
-    {% endfor %}
-    </ul>
-    </li>

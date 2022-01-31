@@ -6,6 +6,11 @@
 <ul>
     <li><strong>ID</strong>: {{ vehiculo.id }}
     <li><strong>Piezas</strong>
-</ul>
+        <ul>
+    {% for pieza in vehiculo.piezas %}
+        <li class="piezas">{{ pieza.nombre }}</li>
+    {% endfor %}
+    </ul>
+    </li>
 </div>
 </div>

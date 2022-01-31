@@ -20,15 +20,16 @@ class AutosController extends AbstractController
 
         $vehiculos =  $repositorio->findBy(["tipos" => "1"]);
 
-        /* 
+        /*
         $repositorio2 = $doctrine->getRepository(Piezas::class);
 
-        $piezas =  $repositorio2->findBy(["nombre"]);
+        $piezas =  $repositorio2->findAll();
         */
-        
+
         return $this->render('autos/index.html.twig', [
             'controller_name' => 'AutosController',
-            'vehiculos' => $vehiculos
+            'vehiculos' => $vehiculos,
+ 
         ]);
     }
 
