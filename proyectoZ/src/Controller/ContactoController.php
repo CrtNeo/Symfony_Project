@@ -15,15 +15,7 @@ class ContactoController extends AbstractController
     /**
      * @Route("/contacto", name="contacto")
      */
-    public function index(): Response
-    {
-        return $this->render('contacto/contact.html.twig', [
-            'controller_name' => 'ContactoController',
-        ]);
-    }
-
-    /*
-    public function enviarMensaje(Request $request)
+    public function index(Request $request, ManagerRegistry $doctrine): Response
     {
         $mensaje = new Mensaje();
         $form = $this->createForm(MensajeType::class, $mensaje);
@@ -31,19 +23,15 @@ class ContactoController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $doctrine->getManager();
             $entityManager->persist($mensaje);
             $entityManager->flush();
 
-            return $this->redirectToRoute('contacto/contact.html.twig');
+            return $this->redirectToRoute('contacto');
         }
-
         return $this->render(
             'contacto/contact.html.twig',
-            array('form' => $form)
+            ['form' => $form->createView()]
         );
-        
     }
-    */
-
 }

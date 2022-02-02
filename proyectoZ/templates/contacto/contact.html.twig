@@ -7,41 +7,50 @@
 {% endblock %}
 
 {% block body %}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Gracias!</strong> Te agradecemos que hayas contactado con nosotros.
+</div>
  {{ include ('partials/nav.html.twig')}}
 <div class="contacto">
     <div class="row">
           <h1>Contacto</h1>
     </div>
-    <form method="post" >
-    <div class="row input-container">
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+     <div class="row input-container">
           <div class="col-xs-12">
             <div class="styled-input wide">
-              <input type="text" id="nombre" required />
-              <label>Nombre</label> 
+              <div id="animacion">
+                {{ form_row(form.nombre) }}
+              <div>
             </div>
           </div>
           <div class="col-md-6 col-sm-12">
             <div class="styled-input">
-              <input type="text" id="email" required />
-              <label>Email</label> 
+                {{ form_row(form.email) }}
             </div>
           </div>
           <div class="col-md-6 col-sm-12">
             <div class="styled-input" style="float:right;">
-              <input type="text" id="telefono" required />
-              <label>Teléfono</label> 
+                {{ form_row(form.telefono) }}
             </div>
           </div>
           <div class="col-xs-12">
             <div class="styled-input wide">
-              <textarea required id="texto"></textarea>
-              <label>Mensaje</label>
+              {{ form_row(form.texto) }}
             </div>
           </div>
           <div class="col-xs-12">
             <input type="submit" id="guardar" value="Enviar">
           </div>
     </div>
-    </form>
+{{ form_end(form) }}
 </div>
+
+
+
 {% endblock %}

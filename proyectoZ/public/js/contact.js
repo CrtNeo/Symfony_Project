@@ -1,7 +1,7 @@
 window.onload = function(){
     document.getElementById("nombre").focus();
     document.getElementById("guardar").onclick = obligatorio;
-    document.getElementById("guardar").onclick = obligatorioNumero;
+
 }
 
   function limita(evento) {
@@ -18,3 +18,12 @@ function obligatorio(evento){
       evento.preventDefault();
   }
 }
+
+    $(function(){
+      $("#guardar").click(function(){
+        $(".alert").animate({ 
+          display: "block", 
+      }, 1000); 
+        $(".alert").slideDown();
+      })
+    })
