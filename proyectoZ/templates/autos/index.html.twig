@@ -7,12 +7,7 @@
 {% block body %}
  {{ include ('partials/nav.html.twig')}}
 <div class = "categoria">
-<form>
- <div class="barra-buscar">
-    <button class="boton-buscar"><ion-icon name="search-outline" id="icono"></ion-icon></button>
-    <input type="text" class="input-search" placeholder="Buscar...">
-  </div>
-  </form>
+ {{ include ('partials/buscador.html.twig')}}
     <h1 class = "titulo-categoria">Listado de coches</h1>
      <div class = "cuerpo-categoria">
         {% for vehiculo in vehiculos %}

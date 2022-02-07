@@ -20,10 +20,8 @@ function obligatorio(evento){
 }
 
     $(function(){
-      $("#guardar").click(function(){
-        $(".alert").animate({ 
-          display: "block", 
-      }, 1000); 
-        $(".alert").slideDown();
+      $('.alert').hide();
+      $("#formulario").submit(function(evento){
+        $(".alert").show();
       })
     })

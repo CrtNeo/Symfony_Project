@@ -5,6 +5,17 @@
             <link rel="stylesheet" href="/css/register.css" />
             <link rel="stylesheet" href="/css/estilos.css" />
 {% endblock %}
+        {% block javascripts %}
+    <script type="text/javascript" src="/js/register.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>      
+    {% endblock %}
 {% block body %}
  {{ include ('partials/nav.html.twig')}}
     <section>
@@ -14,8 +25,8 @@
           <div class="formulario">
             <form>
               <h2>Login</h2>
-              <input type="text" placeholder="Nombre de usuario" />
-              <input type="password" placeholder="Contraseña" id="passwd" />
+              <input type="text" placeholder="Nombre de usuario"/>
+              <input type="password" placeholder="Contraseña" id="passwd" name="_password"/>
               <input type="checkbox" id="check" />
               <input type="submit" value="Login" />
               <p class="registro">
@@ -30,9 +41,9 @@
             <form>
               <h2>Crear una cuenta</h2>
               <input type="text" placeholder="Nombre de usuario" />
-              <input type="text" placeholder="Correo electronico" />
-              <input type="password" placeholder="Contraseña"/>
-              <input type="text" placeholder="Confirmar contraseña" />
+              <input type="" placeholder="Correo electronico"/>
+              <input type="password" placeholder="Contraseña" />
+              <input type="password" placeholder="Confirmar contraseña" />
               <input type="submit" value="Register" />
               <p class="registro">
                 Ya tienes una cuenta? <a href="#" id="cambiador2">Iniciar sesion</a>
