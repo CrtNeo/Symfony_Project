@@ -7,12 +7,14 @@
 {% block body %}
  {{ include ('partials/nav.html.twig')}}
 <div class = "categoria">
- {{ include ('partials/buscador.html.twig')}}
+    {{ include ('partials/buscador.html.twig')}}
     <h1 class = "titulo-categoria">Listado de coches</h1>
+    <div class="contenido-categoria">
      <div class = "cuerpo-categoria">
         {% for vehiculo in vehiculos %}
             {{ include ('partials/datos_vehiculo.html.twig', { 'vehiculo': vehiculo })}}
         {% endfor %}
+     </div>
      </div>
 </div>
  {{ include ('partials/footer.html.twig')}}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Tipos;
 use App\Entity\Vehiculos;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,9 +21,8 @@ class VehiculosController extends AbstractController
         $vehiculos =  $repositorio->findBy(["tipos" => "1"]);
 
         return $this->render('autos/index.html.twig', [
-            'controller_name' => 'AutosController',
+            'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
- 
         ]);
     }
 
@@ -36,8 +36,8 @@ class VehiculosController extends AbstractController
         $vehiculos =  $repositorio->findBy(["tipos" => "2"]);
 
         return $this->render('motos/index.html.twig', [
-            'controller_name' => 'MotosController',
-            'vehiculos' => $vehiculos
+            'controller_name' => 'VehiculosController',
+            'vehiculos' => $vehiculos,
         ]);
     }
 
@@ -51,8 +51,8 @@ class VehiculosController extends AbstractController
         $vehiculos =  $repositorio->findBy(["tipos" => "3"]);
 
         return $this->render('otros/index.html.twig', [
-            'controller_name' => 'OtrosController',
-            'vehiculos' => $vehiculos
+            'controller_name' => 'VehiculosController',
+            'vehiculos' => $vehiculos,
         ]);
     }
 
