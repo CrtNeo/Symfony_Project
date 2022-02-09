@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+{% block stylesheets %}
+            <link rel="stylesheet" href="/css/register.css" />
+            <link rel="stylesheet" href="/css/estilos.css" />
+{% endblock %}
+        {% block javascripts %}
+    <script type="text/javascript" src="/js/register.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>      
+    {% endblock %}
+{% block body %}
+ {{ include ('partials/nav.html.twig')}}
+    <section>
+      <div class="contenedor">
+        <div class="usuario register">
+          <div class="formulario">
+            {{ form_start(registrationForm) }}
+            <form>
+              <h2>Crear una cuenta</h2>
+              {{ form_row(registrationForm.username, {
+                label: ' '
+              }) }}
+              {{ form_row(registrationForm.email, {
+                label: ' '
+              }) }}
+              {{ form_row(registrationForm.plainPassword, {
+                label: ' ',
+                'id': 'passwd'
+              }) }}
+              Ver contraseña<input type="checkbox" id="check" class="check"/>
+              {{ form_row(registrationForm.agreeTerms, { 'id': 'check'}) }}
+              <input type="submit" value="Register"/>
+              <p class="registro">
+                Ya tienes una cuenta? <a href="/login" id="cambiador2">Iniciar sesion</a>
+              </p>
+            </form>
+            {{ form_end(registrationForm) }}
+          </div>
+          <div class="imagenForm"><img src="/media/img/register.jpg" alt=""></div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

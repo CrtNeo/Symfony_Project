@@ -297,46 +297,7 @@ section .contenedor .usuario.register .formulario .registro a{
     color: #e73e49;
 }
 
-section .contenedor .register{
-    pointer-events: none;
-}
 
-section .contenedor.active .register{
-    pointer-events: initial;
-}
-
-section .contenedor .register .formulario{
-    top: 100%;
-}
-
-section .contenedor.active .register .formulario{
-    top: 0;
-}
-
-section .contenedor .register .imagenForm{
-    top: -100%;
-    transition: 0.5s;
-}
-
-section .contenedor.active .register .imagenForm{
-    top: 0;
-}
-
-
-
-section .contenedor .login .formulario{
-    top: 0;
-}
-
-section .contenedor.active .login .formulario{ 
-    top: 100%;
-}
-
-section .contenedor .login .imagenForm{
-    top: 0;
-    transition: 0.5s;
-}
-
-section .contenedor.active .login .imagenForm{ 
-    top: -100%;
+section .contenedor .usuario .formulario input[type="checkbox"]{
+  width: 50px;
 }

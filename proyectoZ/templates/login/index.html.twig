@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+{% block stylesheets %}
+            <link rel="stylesheet" href="/css/register.css" />
+{% endblock %}
+        {% block javascripts %}
+    <script type="text/javascript" src="/js/register.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>      
+    {% endblock %}
+{% block body %}
+ {{ include ('partials/nav.html.twig')}}
+    <section>
+      <div class="contenedor">
+        <div class="usuario login">
+          <div class="imagenForm"><img src="/media/img/login.jpg" alt=""></div>
+          <div class="formulario">
+            <form action="{{ path('login') }}" method="post">
+              <h2>Login</h2>
+              <input type="text" placeholder="Correo electrónico" id="username" name="_username" value="{{ last_username }}"/>
+              <input type="password" placeholder="Contraseña" id="passwd" name="_password"/>
+              Ver contraseña<input type="checkbox" id="check" class="check"/>
+              <input type="submit" value="Login"/>
+              <p class="registro">
+                No tienes una cuenta todavía? <a href="/register" id="cambiador">Registrarse</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
