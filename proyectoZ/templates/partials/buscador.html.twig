@@ -15,18 +15,19 @@
   <div class="cerrar"><ion-icon name="close-outline"></ion-icon></div>
   <h3 style="display:flex; justify-content:center;"><strong>Añadir</strong></h3>
   <form class="formulario">
-    <select name="select">
+    <select name="select" id="tipo">
       <option value="1" selected>Coche</option>
       <option value="2">Moto</option>
       <option value="3">Otro</option>
     </select>
+    <input type="text" id="marca" placeholder = "Marca">
     <br>
-    <input type="text" placeholder = "Nombre">
+    <input type="text" id="nombre" placeholder = "Modelo">
     <br>
-    <input type="text" placeholder = "Pieza">
+    <input type="text" id="pieza" placeholder = "Pieza">
     <br>
     <br>
-    <input class="enviar effect01" type = "submit" value = "Añadir" style="cursor: pointer;">
+    <input class="enviar effect01" id="boton" type = "submit" value = "Añadir" style="cursor: pointer;">
     </form>
   </div>
 </div>  

@@ -21,4 +21,26 @@ $(function(){
         }, 450);
     });
     
+    //AÑADIR
+    $('#boton').click(()=>{
+        $.ajax({
+            url: "/categoria/añadir/ " + $("#tipo").val() + "/" + $("#marca").val() + + "/" + $("#nombre").val() + "/" + $("#pieza").val()  ,
+            success: function (resultado) {
+                $("#cuerpo-categoria").append(resultado);
+                window.location.reload(true);
+            }
+          }).fail(()=>{
+
+          })
+    })
+
+    //ELIMINAR
+    $('.icono-delete').click(()=>{
+        $(".vehiculo").fadeOut();
+        $(".vehiculo").animate({
+           display: "none"
+        }, 450);    
+    })
+
+    
 });

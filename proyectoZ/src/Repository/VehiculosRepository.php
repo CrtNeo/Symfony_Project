@@ -28,14 +28,6 @@ class VehiculosRepository extends ServiceEntityRepository
         return $qb->execute();
     }
 
-    public function findByMarca(): array
-    {
-        $qb = $this->query('marca.vehiculos')
-        ->from('vehiculos')
-        ->join('marcas', 'marca.vehiculos = marcas.nombre', 'left outer')
-        ->get(); 
-        return $qb->execute();
-    }
     // /**
     //  * @return Vehiculos[] Returns an array of Vehiculos objects
     //  */

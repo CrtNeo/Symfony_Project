@@ -13,7 +13,7 @@
      <div class = "cuerpo-categoria">
             {% if vehiculos %}
                 {% for vehiculo in vehiculos %}
-                    {{ include ('partials/datos_vehiculo.html.twig', { 'vehiculo': vehiculo })}}
+                    {{ include ('partials/datos_vehiculo.html.twig')}}
                 {% endfor %}
             {% else %}
                 <p style="color:white">Coche no encontrado</p>

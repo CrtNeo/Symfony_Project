@@ -2,9 +2,11 @@
 {% block title %}Vehiculos{% endblock %}
 {% block body %}
     <h1>Ficha del vehiculo</h1>
+    <div class="cuerpo-categoria">
     {% if vehiculo %}
         {{ include ('partials/datos_vehiculo.html.twig', { 'vehiculo': vehiculo })}}
     {% else %}
         <p>Vehiculo no encontrado</p>
     {% endif %}
+    </div>
    {% endblock %}     

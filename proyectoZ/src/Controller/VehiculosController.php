@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Marcas;
 use App\Entity\Tipos;
 use App\Entity\Vehiculos;
 use Doctrine\Persistence\ManagerRegistry;
@@ -87,17 +88,27 @@ public function buscar(ManagerRegistry $doctrine, $texto): Response
 }
 
 /**
- * @Route("/categoria/añadir/{tipo}/{nombre}/{pieza}", name="añadir_vehiculo")
+ * @Route("/categoria/añadir/{tipo}/{marca}/{nombre}/{pieza}", name="añadir_vehiculo")
  */
 
-public function addVehiculo(ManagerRegistry $doctrine, $tipo, $nombre, $pieza): Response
+public function addVehiculo(ManagerRegistry $doctrine, $tipo, $marca, $nombre, $pieza): Response
 {
     $entityManager = $doctrine->getManager();
+
+    $repositorio = $doctrine->getRepository(Tipos::class);
+
+    $tipo =  $repositorio->find($tipo);
+
+    $repositorio2 = $doctrine->getRepository(Marcas::class);
+
+    $marca =  $repositorio2->find($marca);
 
     $vehiculo = new Vehiculos();
 
     $vehiculo->setTipos($tipo);
-        
+    
+    $vehiculo->setMarca($marca);
+
     $vehiculo->setNombre($nombre);
 
     $vehiculo->addPieza($pieza);

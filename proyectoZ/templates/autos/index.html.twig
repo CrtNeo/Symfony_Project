@@ -10,7 +10,7 @@
     {{ include ('partials/buscador.html.twig')}}
     <h1 class = "titulo-categoria">Listado de coches</h1>
     <div class="contenido-categoria">
-     <div class = "cuerpo-categoria">
+     <div class = "cuerpo-categoria" id="cuerpo-categoria">
         {% for vehiculo in vehiculos %}
             {{ include ('partials/datos_vehiculo.html.twig', { 'vehiculo': vehiculo })}}
         {% endfor %}
