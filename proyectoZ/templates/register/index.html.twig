@@ -23,7 +23,6 @@
         <div class="usuario register">
           <div class="formulario">
             {{ form_start(registrationForm) }}
-            <form>
               <h2>Crear una cuenta</h2>
               {{ form_row(registrationForm.username, {
                 label: ' '
@@ -37,11 +36,14 @@
               }) }}
               Ver contraseña<input type="checkbox" id="check" class="check"/>
               {{ form_row(registrationForm.agreeTerms, { 'id': 'check'}) }}
-              <input type="submit" value="Register"/>
+              {{ form_row(registrationForm.guardar, {
+                'label': 'Register',
+                'id': 'registrarse'
+              }) }}             
               <p class="registro">
                 Ya tienes una cuenta? <a href="/login" id="cambiador2">Iniciar sesion</a>
               </p>
-            </form>
+
             {{ form_end(registrationForm) }}
           </div>
           <div class="imagenForm"><img src="/media/img/register.jpg" alt=""></div>
