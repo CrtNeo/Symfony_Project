@@ -36,14 +36,10 @@
               }) }}
               Ver contraseña<input type="checkbox" id="check" class="check"/>
               {{ form_row(registrationForm.agreeTerms, { 'id': 'check'}) }}
-              {{ form_row(registrationForm.guardar, {
-                'label': 'Register',
-                'id': 'registrarse'
-              }) }}             
+              <input type="submit" value="Register"/>
               <p class="registro">
                 Ya tienes una cuenta? <a href="/login" id="cambiador2">Iniciar sesion</a>
               </p>
-
             {{ form_end(registrationForm) }}
           </div>
           <div class="imagenForm"><img src="/media/img/register.jpg" alt=""></div>

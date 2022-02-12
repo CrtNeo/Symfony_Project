@@ -13,12 +13,27 @@
             <span class="texto">Contacto</span>
           </a>
         </li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+             <li class="lista" name="lista">
+          <a href="#">
+            <span class="icono"><ion-icon name="person"></ion-icon></span>
+            <span class="texto">{{ app.user.username }}</span>
+          </a>
+        </li>
+            <li class="lista" name="lista">
+          <a href="/logout">
+            <span class="icono"><ion-icon name="log-out-outline"></ion-icon></span>
+            <span class="texto">Logout</span>
+          </a>
+        </li>
+    {% else %}
         <li class="lista" name="lista">
           <a href="/login">
             <span class="icono"><ion-icon name="person"></ion-icon></span>
             <span class="texto">Login</span>
           </a>
         </li>
+    {% endif %}
       </ul>
       <div class="indicador"></div>
     </div>
