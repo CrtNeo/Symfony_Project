@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Marcas;
-use App\Entity\Tipos;
 use App\Entity\Vehiculos;
+use App\Form\addVehicleType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+
 
 class VehiculosController extends AbstractController
 {
@@ -87,39 +89,20 @@ public function buscar(ManagerRegistry $doctrine, $texto): Response
     return $this->render("lista_autos.html.twig", ['vehiculos' => $vehiculos]);
 }
 
-/**
- * @Route("/categoria/añadir/{tipo}/{marca}/{nombre}/{pieza}", name="añadir_vehiculo")
- */
-
-public function addVehiculo(ManagerRegistry $doctrine, $tipo, $marca, $nombre, $pieza): Response
+public function addVehiculo(Request $request, EntityManagerInterface $entityManager): Response
 {
-    $entityManager = $doctrine->getManager();
-
-    $repositorio = $doctrine->getRepository(Tipos::class);
-
-    $tipo =  $repositorio->find($tipo);
-
-    $repositorio2 = $doctrine->getRepository(Marcas::class);
-
-    $marca =  $repositorio2->find($marca);
-
     $vehiculo = new Vehiculos();
+    $form = $this->createForm(addVehicleType::class, $vehiculo);
+    $form->handleRequest($request);
 
-    $vehiculo->setTipos($tipo);
-    
-    $vehiculo->setMarca($marca);
-
-    $vehiculo->setNombre($nombre);
-
-    $vehiculo->addPieza($pieza);
-    
-    $entityManager->persist($vehiculo);    
-
-    try{
-        $entityManager->flush();
-        return new Response("Vehiculo añadido correctamente!");
-    }catch(\Exception $e){
-        throw new \Exception ($e->getMessage(), "\n");
+    if ($form->isSubmitted() && $form->isValid()) {
+ 
+            $entityManager->persist($vehiculo);
+            $entityManager->flush();
     }
+    return $this->render('partials/buscador.html.twig', [
+        'addVehicle' => $form->createView(),
+    ]);
 }
+
 }
