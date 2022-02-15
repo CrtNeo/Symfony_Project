@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Vehiculos;
+use App\Entity\Marcas;
 use App\Form\addVehicleType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,17 +18,30 @@ class VehiculosController extends AbstractController
 /**
      * @Route("/categoria/coches", name="pagina_coches")
      */
-    public function inicio_coches(ManagerRegistry $doctrine): Response{
+    public function inicio_coches(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager): Response{
   
         $repositorio = $doctrine->getRepository(Vehiculos::class);
 
         $vehiculos =  $repositorio->findBy(["tipos" => "1"]);
 
+        $vehiculo = new Vehiculos();
+        $form = $this->createForm(addVehicleType::class, $vehiculo);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+     
+                $entityManager->persist($vehiculo);
+                $entityManager->flush();
+        }
+
         return $this->render('autos/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
+            'addVehicle' => $form->createView()
         ]);
+
     }
+
 
     /**
      * @Route("/categoria/motos", name="pagina_motos")
@@ -89,20 +103,5 @@ public function buscar(ManagerRegistry $doctrine, $texto): Response
     return $this->render("lista_autos.html.twig", ['vehiculos' => $vehiculos]);
 }
 
-public function addVehiculo(Request $request, EntityManagerInterface $entityManager): Response
-{
-    $vehiculo = new Vehiculos();
-    $form = $this->createForm(addVehicleType::class, $vehiculo);
-    $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
- 
-            $entityManager->persist($vehiculo);
-            $entityManager->flush();
-    }
-    return $this->render('partials/buscador.html.twig', [
-        'addVehicle' => $form->createView(),
-    ]);
-}
-
-}
+}   

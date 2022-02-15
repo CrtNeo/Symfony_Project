@@ -14,20 +14,21 @@
   <div class = "cuerpo-add">
   <div class="cerrar"><ion-icon name="close-outline"></ion-icon></div>
   <h3 style="display:flex; justify-content:center;"><strong>Añadir</strong></h3>
-  <form class="formulario">
-    <select name="select" id="tipo">
-      <option value="1" selected>Coche</option>
-      <option value="2">Moto</option>
-      <option value="3">Otro</option>
-    </select>
-    <input type="text" id="marca" placeholder = "Marca">
+  <div class="formulario">
+          {{ form_start(addVehicle) }}
+          {{ form_row(addVehicle.tipos, {
+                label: ' '
+              }) }}
+          {{ form_row(addVehicle.marca, {
+                label: ' '
+              }) }}
+          {{ form_row(addVehicle.nombre, {
+                label: ' '
+              }) }}
+          <input class="enviar effect01" id="boton" type = "submit" value = "Añadir" style="cursor: pointer;">
+          {{ form_end(addVehicle) }}
     <br>
-    <input type="text" id="nombre" placeholder = "Modelo">
     <br>
-    <input type="text" id="pieza" placeholder = "Pieza">
-    <br>
-    <br>
-    <input class="enviar effect01" id="boton" type = "submit" value = "Añadir" style="cursor: pointer;">
-    </form>
+    </div>
   </div>
 </div>  
