@@ -6,10 +6,11 @@
     <input type="text" class="input-search" placeholder="Buscar...">
   </div>
   </form>
+{% if is_granted('ROLE_ADMIN') %}
+
   </li>
   <li><div class="icono"><ion-icon name="add-outline"></ion-icon></div></li>
   </ul>
-
 <div class = "add">
   <div class = "cuerpo-add">
   <div class="cerrar"><ion-icon name="close-outline"></ion-icon></div>
@@ -31,4 +32,6 @@
     <br>
     </div>
   </div>
+{% endif %}
+
 </div>  

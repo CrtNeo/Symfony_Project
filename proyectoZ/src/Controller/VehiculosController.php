@@ -46,30 +46,52 @@ class VehiculosController extends AbstractController
     /**
      * @Route("/categoria/motos", name="pagina_motos")
      */
-    public function inicio_motos(ManagerRegistry $doctrine): Response
+    public function inicio_motos(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager): Response
     {
         $repositorio = $doctrine->getRepository(Vehiculos::class);
 
         $vehiculos =  $repositorio->findBy(["tipos" => "2"]);
 
+        $vehiculo = new Vehiculos();
+        $form = $this->createForm(addVehicleType::class, $vehiculo);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+     
+                $entityManager->persist($vehiculo);
+                $entityManager->flush();
+        }
+
         return $this->render('motos/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
+            'addVehicle' => $form->createView()
         ]);
     }
 
         /**
      * @Route("/categoria/otros", name="pagina_otros")
      */
-    public function inicio_otros(ManagerRegistry $doctrine): Response
+    public function inicio_otros(ManagerRegistry $doctrine, Request $request, EntityManagerInterface $entityManager): Response
     {
         $repositorio = $doctrine->getRepository(Vehiculos::class);
 
         $vehiculos =  $repositorio->findBy(["tipos" => "3"]);
 
+        $vehiculo = new Vehiculos();
+        $form = $this->createForm(addVehicleType::class, $vehiculo);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+     
+                $entityManager->persist($vehiculo);
+                $entityManager->flush();
+        }
+
         return $this->render('otros/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
+            'addVehicle' => $form->createView()
         ]);
     }
 
