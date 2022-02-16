@@ -17,16 +17,24 @@
   <h3 style="display:flex; justify-content:center;"><strong>Añadir</strong></h3>
   <div class="formulario">
           {{ form_start(addVehicle) }}
+          <div class="filter-flex">
           {{ form_row(addVehicle.tipos, {
                 label: ' '
               }) }}
           {{ form_row(addVehicle.marca, {
                 label: ' '
               }) }}
+              </div>
           {{ form_row(addVehicle.nombre, {
-                label: ' '
+                label: ' ',
+                'id': 'input-add-name'
               }) }}
-          <input class="enviar effect01" id="boton" type = "submit" value = "Añadir" style="cursor: pointer;">
+          <div class="button-flex">
+          {{ form_row(addVehicle.enviar, {
+                label: 'Enviar',
+                'class': 'enviar effect01'
+              }) }}
+          </div>
           {{ form_end(addVehicle) }}
     <br>
     <br>

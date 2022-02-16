@@ -6,7 +6,7 @@ $(function(){
         $("form").attr("action", "/categoria/buscar/" + valorInput);
     })
 
-    //DESPLEGAR AÑADIR
+    //AÑADIR
     $(".icono").click(() =>{
         $(".add").animate({
             opacity: 1,
@@ -20,7 +20,6 @@ $(function(){
             height: 'hide'
         }, 450);
     });
-
     //ELIMINAR
     $('.icono-delete').click(()=>{
         $(".vehiculo").fadeOut();

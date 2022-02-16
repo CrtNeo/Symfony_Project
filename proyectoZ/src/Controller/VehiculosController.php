@@ -32,6 +32,8 @@ class VehiculosController extends AbstractController
      
                 $entityManager->persist($vehiculo);
                 $entityManager->flush();
+            
+            return $this->redirectToRoute('pagina_coches');
         }
 
         return $this->render('autos/index.html.twig', [
@@ -60,6 +62,8 @@ class VehiculosController extends AbstractController
      
                 $entityManager->persist($vehiculo);
                 $entityManager->flush();
+
+            return $this->redirectToRoute('pagina_motos');
         }
 
         return $this->render('motos/index.html.twig', [
@@ -86,6 +90,8 @@ class VehiculosController extends AbstractController
      
                 $entityManager->persist($vehiculo);
                 $entityManager->flush();
+
+            return $this->redirectToRoute('pagina_otros');
         }
 
         return $this->render('otros/index.html.twig', [
