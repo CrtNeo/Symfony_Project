@@ -18,10 +18,3 @@ function obligatorio(evento){
       evento.preventDefault();
   }
 }
-
-    $(function(){
-      $('.alert').hide();
-      $("#formulario").submit(function(evento){
-        $(".alert").show();
-      })
-    })

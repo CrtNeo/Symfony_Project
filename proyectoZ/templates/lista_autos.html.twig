@@ -10,6 +10,7 @@
     <div class = "categoria">
      {{ include ('partials/buscador.html.twig')}}
     <h1 class = "titulo-categoria">Listado de vehiculos</h1>
+    <div class="contenido-categoria">
      <div class = "cuerpo-categoria">
             {% if vehiculos %}
                 {% for vehiculo in vehiculos %}
@@ -18,6 +19,7 @@
             {% else %}
                 <p style="color:white">Coche no encontrado</p>
             {% endif %}    
+            </div>
         </div>
     </div>
 {{ include ('partials/footer.html.twig')}}

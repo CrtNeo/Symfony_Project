@@ -251,3 +251,13 @@ body {
   display: flex;
   justify-content: center;
 }
+
+
+@media all and (max-width: 1100px){
+  .barra-buscar{
+    position: relative;
+    list-style: none;
+  }
+
+
+}

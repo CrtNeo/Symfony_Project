@@ -20,13 +20,6 @@ $(function(){
             height: 'hide'
         }, 450);
     });
-    //ELIMINAR
-    $('.icono-delete').click(()=>{
-        $(".vehiculo").fadeOut();
-        $(".vehiculo").animate({
-           display: "none"
-        }, 450);    
-    })
 
     
 });
