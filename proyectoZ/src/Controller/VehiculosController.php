@@ -40,7 +40,6 @@ class VehiculosController extends AbstractController
         return $this->render('autos/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
-            'tipo' => "coche",
             'addVehicle' => $form->createView()
         ]);
 
@@ -71,7 +70,6 @@ class VehiculosController extends AbstractController
         return $this->render('motos/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
-            'tipo' => "moto",
             'addVehicle' => $form->createView()
         ]);
     }
@@ -100,7 +98,6 @@ class VehiculosController extends AbstractController
         return $this->render('otros/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
-            'tipo' => "otro",
             'addVehicle' => $form->createView()
         ]);
     }
@@ -108,16 +105,30 @@ class VehiculosController extends AbstractController
       /**
  * @Route("/categoria/{codigo<\d+>?1}", name="ficha_vehiculo")
  */
-public function ficha(ManagerRegistry $doctrine, $codigo): Response
+public function ficha(ManagerRegistry $doctrine, $codigo, Request $request, EntityManagerInterface $entityManager): Response
 {
 
     $repositorio = $doctrine->getRepository(Vehiculos::class);
 
     $vehiculo =  $repositorio->find($codigo);
 
+    $vehiculo = new Vehiculos();
+    $form = $this->createForm(addVehicleType::class, $vehiculo);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+ 
+            $entityManager->persist($vehiculo);
+            $entityManager->flush();
+
+        return $this->redirectToRoute('pagina_otros');
+    }
+
     return $this->render('vehiculos.html.twig', [
 
-        'vehiculo' => $vehiculo
+        'vehiculo' => $vehiculo,
+        'addVehicle' => $form->createView()
+
 
     ]);
 }
@@ -126,17 +137,29 @@ public function ficha(ManagerRegistry $doctrine, $codigo): Response
  * @Route("/categoria/buscar/{texto}", name="buscar_vehiculo")
  */
 
-public function buscar(ManagerRegistry $doctrine, $texto): Response
+public function buscar(ManagerRegistry $doctrine, $texto,Request $request, EntityManagerInterface $entityManager): Response
 {
     $repositorio = $doctrine->getRepository(Vehiculos::class);
 
     $vehiculos =  $repositorio->findByName($texto);
 
-    return $this->render("lista_autos.html.twig", ['vehiculos' => $vehiculos]);
+    $vehiculo = new Vehiculos();
+    $form = $this->createForm(addVehicleType::class, $vehiculo);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+ 
+            $entityManager->persist($vehiculo);
+            $entityManager->flush();
+
+        return $this->redirectToRoute('pagina_otros');
+    }
+
+    return $this->render("lista_autos.html.twig", ['vehiculos' => $vehiculos, 'addVehicle' => $form->createView()]);
 }
 
       /**
- * @Route("/vehiculo/{tipo}/borrar/{nombre}/{id}", name="ficha_vehiculo")
+ * @Route("/vehiculo/borrar/{nombre}/{id}", name="ficha_vehiculo")
  */
 public function borrarCoche(ManagerRegistry $doctrine, $id): Response
 {
@@ -157,6 +180,49 @@ public function borrarCoche(ManagerRegistry $doctrine, $id): Response
     return $this->redirectToRoute('pagina_coches');
 }
 
+      /**
+ * @Route("/vehiculo/borrar/{nombre}/{id}", name="ficha_vehiculo")
+ */
+public function borrarMoto(ManagerRegistry $doctrine, $id): Response
+{
+
+    $repositorio = $doctrine->getRepository(Vehiculos::class);
+
+    $vehiculo =  $repositorio->find($id);
+
+    $entityManager = $doctrine->getManager();
+    $piezas = $vehiculo->getPiezas();
+    foreach ($piezas as $pieza){
+        $entityManager->remove($pieza);
+    }
+    //$vehiculo->piezas->delete();
+    $entityManager->remove($vehiculo);
+    $entityManager->flush();
+    
+    return $this->redirectToRoute('pagina_motos');
+}
+
+      /**
+ * @Route("/vehiculo/borrar/{nombre}/{id}", name="ficha_vehiculo")
+ */
+public function borrarOtro(ManagerRegistry $doctrine, $id): Response
+{
+
+    $repositorio = $doctrine->getRepository(Vehiculos::class);
+
+    $vehiculo =  $repositorio->find($id);
+
+    $entityManager = $doctrine->getManager();
+    $piezas = $vehiculo->getPiezas();
+    foreach ($piezas as $pieza){
+        $entityManager->remove($pieza);
+    }
+    //$vehiculo->piezas->delete();
+    $entityManager->remove($vehiculo);
+    $entityManager->flush();
+    
+    return $this->redirectToRoute('pagina_otros');
+}
 
 
 }   

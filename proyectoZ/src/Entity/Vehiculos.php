@@ -37,7 +37,7 @@ class Vehiculos
     private $marca;
 
     /**
-     * @ORM\OneToMany(targetEntity=Piezas::class, mappedBy="vehiculos")
+     * @ORM\ManyToMany(targetEntity=Piezas::class, inversedBy="vehiculos")
      */
     private $piezas;
 
@@ -99,7 +99,6 @@ class Vehiculos
     {
         if (!$this->piezas->contains($pieza)) {
             $this->piezas[] = $pieza;
-            $pieza->setVehiculos($this);
         }
 
         return $this;
@@ -107,17 +106,8 @@ class Vehiculos
 
     public function removePieza(Piezas $pieza): self
     {
-        if ($this->piezas->removeElement($pieza)) {
-            // set the owning side to null (unless already changed)
-            if ($pieza->getVehiculos() === $this) {
-                $pieza->setVehiculos(null);
-            }
-        }
+        $this->piezas->removeElement($pieza);
 
         return $this;
-    }
-    public function __toString()
-    {
-        return $this->nombre;
     }
 }

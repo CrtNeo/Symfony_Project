@@ -19,6 +19,15 @@ class TiposRepository extends ServiceEntityRepository
         parent::__construct($registry, Tipos::class);
     }
 
+    public function findByName($text): array
+    {
+        $qb = $this->createQueryBuilder('v')
+        ->andWhere('v.nombre LIKE :text')
+        ->setParameter('text', '%' . $text . '%')
+        ->getQuery();
+        return $qb->execute();
+    }
+
     // /**
     //  * @return Tipos[] Returns an array of Tipos objects
     //  */

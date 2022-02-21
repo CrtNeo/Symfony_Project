@@ -27,7 +27,6 @@ class VehiculosRepository extends ServiceEntityRepository
         ->getQuery();
         return $qb->execute();
     }
-
     // /**
     //  * @return Vehiculos[] Returns an array of Vehiculos objects
     //  */
