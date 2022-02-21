@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Vehiculos;
 use App\Entity\Marcas;
+use App\Entity\Tipos;
 use App\Form\addVehicleType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,6 +40,7 @@ class VehiculosController extends AbstractController
         return $this->render('autos/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
+            'tipo' => "coche",
             'addVehicle' => $form->createView()
         ]);
 
@@ -69,6 +71,7 @@ class VehiculosController extends AbstractController
         return $this->render('motos/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
+            'tipo' => "moto",
             'addVehicle' => $form->createView()
         ]);
     }
@@ -97,6 +100,7 @@ class VehiculosController extends AbstractController
         return $this->render('otros/index.html.twig', [
             'controller_name' => 'VehiculosController',
             'vehiculos' => $vehiculos,
+            'tipo' => "otro",
             'addVehicle' => $form->createView()
         ]);
     }
@@ -130,6 +134,29 @@ public function buscar(ManagerRegistry $doctrine, $texto): Response
 
     return $this->render("lista_autos.html.twig", ['vehiculos' => $vehiculos]);
 }
+
+      /**
+ * @Route("/vehiculo/{tipo}/borrar/{nombre}/{id}", name="ficha_vehiculo")
+ */
+public function borrarCoche(ManagerRegistry $doctrine, $id): Response
+{
+
+    $repositorio = $doctrine->getRepository(Vehiculos::class);
+
+    $vehiculo =  $repositorio->find($id);
+
+    $entityManager = $doctrine->getManager();
+    $piezas = $vehiculo->getPiezas();
+    foreach ($piezas as $pieza){
+        $entityManager->remove($pieza);
+    }
+    //$vehiculo->piezas->delete();
+    $entityManager->remove($vehiculo);
+    $entityManager->flush();
+    
+    return $this->redirectToRoute('pagina_coches');
+}
+
 
 
 }   

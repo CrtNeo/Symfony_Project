@@ -2,6 +2,10 @@
 <div class = "vehiculo">
 <div class = "contenido">
 <h3><strong>{{ vehiculo.nombre }}</strong></h3>
+{% if is_granted('ROLE_ADMIN') %}
+<a class="icono-borrar" href="/vehiculo/{{tipo}}/borrar/{{vehiculo.nombre}}/{{vehiculo.id}}"><ion-icon name="trash-outline"></ion-icon></a>
+{% endif %}
+
 
 <ul>
     <li><strong>ID</strong>: {{ vehiculo.id }}
